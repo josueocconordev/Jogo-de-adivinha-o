@@ -1,28 +1,26 @@
 let numeroSecreto = Math.floor(Math.random() * 11);
 let tentativas = 0;
+let numeroSecreto = 7;
 
 function verificarChute() {
   let input = document.getElementById("chute");
   let chute = Number(input.value);
   let limite = 10;
-  let numeroSecreto = Math.floor(Math.random() * 101);
 
-if (tentativas >= limite) {
-  document.getElementById("mensagem").innerText =
-    "Game Over! O número era " + numeroSecreto;
+console.log("chute:", chute, typeof chute);
+console.log("numeroSecreto:", numeroSecreto, typeof numeroSecreto);
 
-  document.getElementById("btnChutar").disabled = true;
-  document.getElementById("chute").disabled = true;
-}
+  if (tentativas >= limite) {
+    document.getElementById("mensagem").innerText =
+      "Game Over! O número era " + numeroSecreto;
 
-  // validação
-  if (input.value === "") {
+    document.getElementById("btnChutar").disabled = true;
+    document.getElementById("chute").disabled = true;
+
     return;
   }
 
-  if (isNaN(chute)) {
-    return;
-  }
+  if (input.value === "" || isNaN(chute)) return;
 
   tentativas++;
 
@@ -32,7 +30,7 @@ if (tentativas >= limite) {
 
     document.getElementById("btnChutar").disabled = true;
     document.getElementById("chute").disabled = true;
-
+	
   } else if (chute > numeroSecreto) {
     document.getElementById("mensagem").innerText =
       "Muito alto! Tente um número menor 👇";
